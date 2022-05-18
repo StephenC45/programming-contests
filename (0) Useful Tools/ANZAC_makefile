@@ -1,7 +1,9 @@
 # Compiles all .c and .cpp files in a similar way to the ANZAC contests,
 # but with some minor differences:
 # 	The -O2 flag is not used.
-#	The -Wall flag is replaced with -Wextra to include extra warning flags.
+#	The -Wextra flag is added to include extra warning flags.
+#	The -Wconversion or -Wsign-conversion flag is added.
+#	The -Wshadow flag is added to warn of variable shadowing.
 #	The -pedantic-errors flag is added.
 #	The -g flag is added so you can use GDB or Valgrind to debug.
 #	
@@ -14,13 +16,15 @@
 
 # Executables from C files have the '.exe' file extension.
 C=gcc
-CFLAGS=-x c -Wextra -pedantic-errors -g -static -pipe
-CBIN = $(patsubst %.c, %.exe, $(wildcard *.c))
+CWARNFLAGS=-x c -Wall -Wextra -Wshadow
+COTHERFLAGS=-pedantic-errors -g -static -pipe
+CBIN=$(patsubst %.c, %.exe, $(wildcard *.c))
 
 # Executables from C++ files have no file extension.
 CPP=g++
-CPPFLAGS=-x c++ -Wextra -pedantic-errors -std=c++17 -g -static -pipe
-CPPBIN = $(patsubst %.cpp, %, $(wildcard *.cpp))
+CPPWARNFLAGS=-x c++ -Wall -Wextra -Weffc++ -Wsign-conversion -Wshadow
+CPPOTHERFLAGS=-pedantic-errors -std=c++17 -g -static -pipe
+CPPBIN=$(patsubst %.cpp, %, $(wildcard *.cpp))
 
 #------------------------------------------------------------------------------#
 
@@ -28,8 +32,8 @@ all: $(CPPBIN) $(CBIN)
 
 # C++
 %: %.cpp Makefile
-	$(CPP) $(CPPFLAGS) $< -o $@
+	$(CPP) $(CPPWARNFLAGS) $(CPPOTHERFLAGS) $< -o $@
 
 # C
 %.exe: %.c Makefile
-	$(C) $(CFLAGS) $< -o $@ -lm
+	$(C) $(CWARNFLAGS) $(COTHERFLAGS) $< -o $@ -lm
