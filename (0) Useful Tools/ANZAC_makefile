@@ -2,10 +2,10 @@
 # but with some minor differences:
 # 	The -O2 flag is not used.
 #	The -Wextra flag is added to include extra warning flags.
-#	The -Wconversion or -Wsign-conversion flag is added.
 #	The -Wshadow flag is added to warn of variable shadowing.
 #	The -pedantic-errors flag is added.
 #	The -g flag is added so you can use GDB or Valgrind to debug.
+#	The -static and -pipe flags are removed.
 #	
 
 # Does not work with programs that use multiple files.
@@ -17,13 +17,13 @@
 # Executables from C files have the '.exe' file extension.
 C=gcc
 CWARNFLAGS=-x c -Wall -Wextra -Wshadow
-COTHERFLAGS=-pedantic-errors -g -static -pipe
+COTHERFLAGS=-pedantic-errors -g
 CBIN=$(patsubst %.c, %.exe, $(wildcard *.c))
 
 # Executables from C++ files have no file extension.
 CPP=g++
-CPPWARNFLAGS=-x c++ -Wall -Wextra -Weffc++ -Wsign-conversion -Wshadow
-CPPOTHERFLAGS=-pedantic-errors -std=c++17 -g -static -pipe
+CPPWARNFLAGS=-x c++ -Wall -Wextra -Wshadow
+CPPOTHERFLAGS=-pedantic-errors -std=c++17 -g
 CPPBIN=$(patsubst %.cpp, %, $(wildcard *.cpp))
 
 #------------------------------------------------------------------------------#
