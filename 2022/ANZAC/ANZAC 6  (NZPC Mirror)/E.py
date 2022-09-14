@@ -1,6 +1,6 @@
 """
-Solution to Problem E (Children) from 2022 New Zealand Programming Contest 
-(ANZAC 6).
+Solution to Problem E (Well Behaved Children) from 2022 New Zealand Programming 
+Contest (ANZAC 6).
 
 Problem was worth 10 points.
 

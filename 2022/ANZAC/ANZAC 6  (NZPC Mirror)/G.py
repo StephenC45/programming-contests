@@ -1,5 +1,5 @@
 """
-Solution to Problem G (Factors) from 2022 New Zealand Programming Contest 
+Solution to Problem G (Factorisation) from 2022 New Zealand Programming Contest 
 (ANZAC 6).
 
 Problem was worth 10 points.
