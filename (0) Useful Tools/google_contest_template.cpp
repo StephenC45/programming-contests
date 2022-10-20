@@ -28,7 +28,7 @@ int32_t main(void) {
 
         // Print the line of output for each test case. Be sure to update
         // the "Your output here..." part.
-        cout << "Case #" << i << ": " << "Your output here..." << '\n';
+        cout << "Case #" << tc << ": " << "Your output here..." << '\n';
     }
 
     return 0;
