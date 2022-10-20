@@ -22,7 +22,7 @@ int32_t main(void) {
     cin >> test_count;
 
     // Process each test case.
-    for (int i = 1; i <= test_count; ++i) {
+    for (int tc = 1; tc <= test_count; ++tc) {
         // Write your code here.
         
 
